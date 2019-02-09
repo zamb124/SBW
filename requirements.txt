@@ -3,6 +3,8 @@ Django==2.1.4
 django-autocomplete-light==3.3.2
 django-tables2==2.0.3
 django-tables2-column-shifter==0.5.2
+djangorestframework==3.9.1
 Pillow==5.3.0
 pytz==2018.7
 zope.interface==4.6.0
+
