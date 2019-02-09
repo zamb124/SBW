@@ -1,0 +1,13 @@
+{% load staticfiles %}
+{% block content %}
+            <ol class="breadcrumb ">
+                {% for i in path %}
+                {% if i.name == last %}
+                <li class="breadcrumb-item active"> {{ i.name }}</li>
+                {% else %}
+                <li class="breadcrumb-item"><a href="/{{ i.url }}/"> {{ i.name }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+            </ol>
+{% endblock %}

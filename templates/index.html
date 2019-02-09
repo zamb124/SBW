@@ -1,0 +1,338 @@
+{% extends "wrapper.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container-fluid">
+					<!-- OVERVIEW -->
+<div class="panel panel-headline">
+    <div class="panel-heading">
+        <h3 class="panel-title">Dashboard</h3>
+
+
+
+
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="metric">
+                    <span class="icon"><i class="fa fa-download"></i></span>
+                    <a href="/delivery/"> <p>
+                        <span class="number">1,252</span>
+                        <span class="title">Входящих поставок</span>
+                    </p></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric">
+                    <span class="icon"><i class="fa fa-shopping-bag"></i></span>
+                   <a href="/delivery/"> <p>
+                        <span class="number">203</span>
+                        <span class="title">Исходящих поставок</span>
+                    </p></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric">
+                    <span class="icon"><i class="fa fa-eye"></i></span>
+                    <a href="/operations/"><p>
+                        <span class="number">274,678</span>
+                        <span class="title">Операций по складу</span>
+                    </p></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="metric">
+                    <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                    <p>
+                        <span class="number">35%</span>
+                        <span class="title">Конверсия операций</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div id="headline-chart" class="ct-chart"></div>
+            </div>
+            <div class="col-md-3">
+                <div class="weekly-summary text-right">
+                    <span class="number">2,315</span> <span class="percentage"><i
+                        class="fa fa-caret-up text-success"></i> 12%</span>
+                    <span class="info-label">Число отгруженых</span>
+                </div>
+                <div class="weekly-summary text-right">
+                    <span class="number">5,758</span> <span class="percentage"><i
+                        class="fa fa-caret-up text-success"></i> 23%</span>
+                    <span class="info-label">Принятых</span>
+                </div>
+                <div class="weekly-summary text-right">
+                    <span class="number">65,938</span> <span class="percentage"><i
+                        class="fa fa-caret-down text-danger"></i> 8</span>
+                    <span class="info-label">Общий рост</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+					<!-- END OVERVIEW -->
+					<div class="row">
+						<div class="col-md-6">
+							<!-- RECENT PURCHASES -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Последние операции по поставкам</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body no-padding">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Номер поставки</th>
+												<th>Партнер</th>
+												<th>Количество позиций</th>
+												<th>Время прибытия\отбытия</th>
+												<th>Статус</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><a href="#">763648</a></td>
+												<td>Игорь Шиповалов</td>
+												<td>Alibaba Group</td>
+												<td>Oct 21, 2018</td>
+												<td><span class="label label-success">Завершен</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763649</a></td>
+												<td>Петр Филипов</td>
+												<td>Pandao</td>
+												<td>Oct 21, 2018</td>
+												<td><span class="label label-warning">В обработке</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763650</a></td>
+												<td>Михаил Абрамов</td>
+												<td>Delivery AG</td>
+												<td>Oct 18, 2018</td>
+												<td><span class="label label-danger">Ошибка</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763651</a></td>
+												<td>Артем Филимонов</td>
+												<td>Ozon</td>
+												<td>Oct 17, 2018</td>
+												<td><span class="label label-success">Успешно</span></td>
+											</tr>
+											<tr>
+												<td><a href="#">763652</a></td>
+												<td>Киррил Галицкий</td>
+												<td>Ebay</td>
+												<td>Oct 16, 2018</td>
+												<td><span class="label label-success">Успешно</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer">
+									<div class="row">
+										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Последние</span></div>
+										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">Посмотреть все поставки</a></div>
+									</div>
+								</div>
+							</div>
+							<!-- END RECENT PURCHASES -->
+						</div>
+						<div class="col-md-6">
+							<!-- MULTI CHARTS -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Запланировано и Фактически</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div id="visits-trends-chart" class="ct-chart"></div>
+								</div>
+							</div>
+							<!-- END MULTI CHARTS -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-7">
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">To-Do List</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<ul class="list-unstyled todo-list">
+										<li>
+											<label class="control-inline fancy-checkbox">
+												<input type="checkbox"><span></span>
+											</label>
+											<p>
+												<span class="title">Анализ текущей работы</span>
+												<span class="short-description">Провести текущий анализ и предложить улучшения</span>
+												<span class="date">Oct 9, 2018</span>
+											</p>
+											<div class="controls">
+												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
+											</div>
+										</li>
+										<li>
+											<label class="control-inline fancy-checkbox">
+												<input type="checkbox"><span></span>
+											</label>
+											<p>
+												<span class="title"> Добавить в систему отчет о проделанной работе</span>
+												<span class="short-description">Создать отчет по проделанной работе для каждого бизнес юнита</span>
+												<span class="date">Oct 23, 2018</span>
+											</p>
+											<div class="controls">
+												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<!-- TIMELINE -->
+							<div class="panel panel-scrolling">
+								<div class="panel-heading">
+									<h3 class="panel-title">Последние события</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<ul class="list-unstyled activity-list">
+										<li>
+											<img src="{% static 'img/user1.png' %}" alt="Avatar" class="img-circle pull-left avatar">
+											<p><a href="#">Артем Филипов</a> Перемещение 3 позиции со склада 1 на склад 2 <span class="timestamp">20 minutes ago</span></p>
+										</li>
+										<li>
+											<img src="{% static '/img/user2.png' %}" alt="Avatar" class="img-circle pull-left avatar">
+											<p><a href="#">Михаил Абрамов</a> Разгрузка в Магазин 19 прошла успешно <a href="#">Ссылка на поставкуe</a> <span class="timestamp">Yesterday</span></p>
+
+									</ul>
+									<button type="button" class="btn btn-primary btn-bottom center-block">Посмотреть подробнее</button>
+								</div>
+							</div>
+							<!-- END TIMELINE -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<!-- TASKS -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">My Tasks</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<ul class="list-unstyled task-list">
+										<li>
+											<p>Updating Users Settings <span class="label-percent">23%</span></p>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width:23%">
+													<span class="sr-only">23% Complete</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<p>Load &amp; Stress Test <span class="label-percent">80%</span></p>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+													<span class="sr-only">80% Complete</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<p>Data Duplication Check <span class="label-percent">100%</span></p>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+													<span class="sr-only">Success</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<p>Server Check <span class="label-percent">45%</span></p>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+													<span class="sr-only">45% Complete</span>
+												</div>
+											</div>
+										</li>
+										<li>
+											<p>Mobile App Development <span class="label-percent">10%</span></p>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+													<span class="sr-only">10% Complete</span>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- END TASKS -->
+						</div>
+						<div class="col-md-4">
+							<!-- VISIT CHART -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">Website Visits</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div id="visits-chart" class="ct-chart"></div>
+								</div>
+							</div>
+							<!-- END VISIT CHART -->
+						</div>
+						<div class="col-md-4">
+							<!-- REALTIME CHART -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">System Load</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div id="system-load" class="easy-pie-chart" data-percent="70">
+										<span class="percent">70</span>
+									</div>
+									<h4>CPU Load</h4>
+									<ul class="list-unstyled list-justify">
+										<li>High: <span>95%</span></li>
+										<li>Average: <span>87%</span></li>
+										<li>Low: <span>20%</span></li>
+										<li>Threads: <span>996</span></li>
+										<li>Processes: <span>259</span></li>
+									</ul>
+								</div>
+							</div>
+							<!-- END REALTIME CHART -->
+						</div>
+					</div>
+				</div>
+
+    {% endblock %}

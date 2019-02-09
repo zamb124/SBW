@@ -1,0 +1,35 @@
+<!--{% extends "wrapper.html" %}-->
+{% load staticfiles %}
+{% block content %}
+
+{% csrf_token %}
+<div class="panel">
+    <div class="panel-heading">
+        {% if error %}
+        <h3 class="panel-title">Ошибка !</h3>
+        {% else %}
+        <h3 class="panel-title">Операции</h3>
+         {% endif %}
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <a>{{ error }}, </a>
+
+        </div>
+        {% else %}
+        <div class="alert alert-success" role="alert">
+            Создан складской заказ # {{ order }} и задачи
+            {% for i in tasks %}
+            <a>{{ i }}, </a>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+
+{% endblock %}

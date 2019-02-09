@@ -1,0 +1,49 @@
+{% extends "wrapper.html" %}
+{% block content %}
+<!-- TABLE HOVER -->
+
+<div class="panel">
+	<div class="panel-heading">
+		<h3 class="panel-title">Операции</h3>
+	</div>
+{% include 'infopanel.html' %}
+	{% load humanize %}
+	<div class="panel-body">
+			<div class="row">
+		<div class="col-md-3">
+			<a href="/operations/order/create/">
+				<button type="button" class="btn btn-primary">Создать</button>
+			</a>
+		</div>
+	</div>
+		<table class="table table-hover">
+			<thead>
+			<tr>
+								<th>ID Заказа</th>
+				<th>ID Задачи</th>
+				<th>Материал</th>
+								<th>Количество</th>
+				<th>Ед.изм</th>
+				<th>Источник</th>
+				<th>Назначение</th>
+
+			</tr>
+			</thead>
+			<tbody>
+			{% for i in object_list %}
+			<tr>
+				<td><a href="/operations/order/{{ i.order.id }}">{{ i.order.id }}</a></td>
+				<td><a href="/operations/task/{{ i.id }}">{{ i.id }}</a></td>
+				<td>{{ i.material }}</td>
+				<td>{{ i.value|intword }}</td>
+								<td>{{ i.uom }}</td>
+				<td>{{ i.source }}</td>
+				<td>{{ i.dest }}</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+			<!-- END TABLE HOVER -->
+{% endblock %}

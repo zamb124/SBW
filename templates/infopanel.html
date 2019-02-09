@@ -1,0 +1,41 @@
+{% load staticfiles %}
+{% block content %}
+<div class="row">
+                <div class="col-md-3">
+                    <div class="metric">
+                        <span class="icon"><i class="fa fa-download"></i></span>
+                        <p>
+                            <span class="number">1,252</span>
+                            <span class="title">Входящие поставки</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="metric">
+                        <span class="icon"><i class="fa fa-shopping-bag"></i></span>
+                        <p>
+                            <span class="number">203</span>
+                            <span class="title">Исходящие поставки</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="metric">
+                        <span class="icon"><i class="fa fa-eye"></i></span>
+                        <a href="/operations/"> <p>
+                            <span class="number">{{ infopanel.operations }}</span>
+                            <span class="title">Количество операций</span>
+                        </p></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="metric">
+                        <span class="icon"><i class="fa fa-bar-chart"></i></span>
+                        <p>
+                            <span class="number">1%</span>
+                            <span class="title">Средниее по конверсии</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

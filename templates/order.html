@@ -1,0 +1,72 @@
+<!--{% extends "wrapper.html" %}-->
+
+{% load staticfiles %}
+{% block content %}
+
+<form action="" method="post" xmlns="http://www.w3.org/1999/html">
+    {% csrf_token %}
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Создать заказ на перемещение</h3>
+            <div class="row">
+                <h3></h3>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    {{ form.as_p }}
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="col-md-2">
+                        <img alt="альт" src="/media/logistic-768x407_photo-resizer.ru.jpg">
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Позиции</h3>
+                        {{TaskSet.management_form}}
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Материал</th>
+                                <th scope="col">Количество</th>
+                                <th scope="col">ЕИ</th>
+                                <th scope="col">Источник</th>
+                                <th scope="col">Назначение</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for form in TaskSet %}
+                            <tr>
+                                <th scope="row">{{ form.material }}</th>
+                                <td>{{ form.value }}</td>
+                                <td>{{ form.uom }}</td>
+                                <td>{{ form.source }}</td>
+                                <td>{{ form.dest }}</td>
+                            </tr>
+                            {{ form.media }}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+        </div>
+
+</form>
+
+
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+
+{% endblock %}

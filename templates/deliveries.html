@@ -1,0 +1,32 @@
+{% extends "wrapper.html" %}
+{% block content %}
+{% load render_table from django_tables2 %}
+<!-- TABLE HOVER -->
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Поставки</h3>
+    </div>
+    {% include 'infopanel.html' %}
+    {% load humanize %}
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/delivery/create/">
+                    <button type="button" class="btn-sm btn-success">Создать</button>
+                </a>
+                                <a href="/delivery/edit/">
+                    <button type="button" class="btn-sm btn-success">Изменить</button>
+                </a>
+                                <a href="/delivery/delete/">
+                    <button type="button" class="btn-sm btn-danger">Удалить</button>
+                </a>
+            </div>
+        </div>
+
+
+        {% render_table table %}
+    </div>
+</div>
+<!-- END TABLE HOVER -->
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "rf/wrapperrf.html" %}
+{% load staticfiles %}
+{% block rf %}
+       <!-- <script>
+                {% for m in submenues %}
+	                	$(document).bind('keydown', '{{ m.keyid }}', function(){document.getElementById('{{ m.keyid }}').click();});
+                          {% endfor %}
+        </script>    -->
+<div class="container-fluid">
+    <!-- OVERVIEW -->
+
+    <div>
+        <h4 class="panel-title" style="font-size: 25px; margin-bottom: 10" align="center">{{ menu.name }} </h4>
+    </div>
+    <div class="panel" style="background-color:#98fb98">
+        {% for m in submenues %}
+        <a accesskey="{{ m.keyid }}" href="{{ m.url }}">
+            <div class="col">
+                <div class="metric" style="background-color:#d9eef9">
+                    <span class="icon"><i class="fa fa-download"></i></span>
+                    <p>
+                        <span class="number">{{ m.count }}</span>
+                        <span class="title">{{ m.name }}</span>
+                    <p><span class="title"> {{ m.keyid }}</span></p>
+                    </p>
+
+
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+
+
+
+    </div>
+</div>
+<!-- END OVERVIEW -->
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "wrapper.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container-fluid">
+    <!-- OVERVIEW -->
+    <div class="panel panel-headline">
+        <div class="panel-heading">
+            <h3 class="panel-title">Обзор стуктуры</h3>
+            {% include 'line.html' %}
+        </div>
+        <div class="panel-body">
+{% include 'infopanel.html' %}
+            <!-- Начало структуры по складам-->
+            <div class="panel-body">
+                <div class="row">
+                    <!-- TODO: Цикл по складам -->
+                    {% for l in lgorts %}
+                    {% if quants %}
+                    <div class="col-md-12">
+                    {% else %}
+                    <div class="col-md-3">
+                    {% endif %}
+                        <div class="panel panel-info" href="#">
+                            <div class="panel-heading"><a href="/reporting/structure/whs/{{ l.id}}">{{ l.name}} : {{ l.short}}</a>
+                                <!-- TODO: Вписать Склад --></div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    {% for i in lowers %}
+                                    {% if i.parent_id == l.id %}
+                                    <div class="col-md-6">
+                                        <a href="/reporting/structure/whs/{{ i.id}}">
+                                            <button type="button" class="btn btn-primary btn-sm btn-block">{{ i.name }}</button>
+                                        </a>
+                                        <p>
+                                    </p>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if quants %}
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Квант</th>
+                                            <th>id материала </th>
+                                            <th>Материал</th>
+                                            <th>Количество</th>
+                                            <th>Единица измерения</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for q in quants %}
+                                        <tr>
+                                            <td>{{ q.id }}</td>
+                                            <td>{{ q.material.id }}</td>
+                                            <td>{{ q.material.name }}</td>
+                                            <td>{{ q.value }}</td>
+                                            <td>{{ q.uom.short }}</td>
+                                        </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                    </table>
+                                    {% endif %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- TODO: Конец Цикл по складам -->
+                </div>
+            </div>
+        </div>
+            <!-- Конец структуры по складам-->
+        </div>
+        <!--{% include 'infopanel.html' %}-->
+    </div>
+    <!-- END OVERVIEW -->
+    {% endblock %}
