@@ -9,7 +9,7 @@ class MyColumn(tables.Column):
 
 class DeliveryTable(tables.Table):
     selection = tables.CheckBoxColumn(accessor='pk', orderable=False)
-    открыть = tables.TemplateColumn('<a class="btn-sm btn-primary" href="/delivery/{{ record.id }}" role="button">Открыть</a>')
+    открыть = tables.TemplateColumn('<a class="btn-sm btn-primary" href="/delivery/{{ record.id }}/view" role="button">Открыть</a>')
     #positions = tables.Column(orderable=False)
     values = tables.TemplateColumn('<a href= #> <span class="badge bg-primary">{{ record.positions }}</span> </a>', template_name='Колво', accessor='Кол=во')
 

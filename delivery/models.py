@@ -36,7 +36,7 @@ class DeliveryHead(models.Model):
 
 class DeliveryPosition(models.Model):
     delivery_position_type = models.ForeignKey(DeliveryPositionType, verbose_name='Тип позиции поставки', null=True, blank=True, on_delete=models.CASCADE)
-    delivery = models.ForeignKey(DeliveryHead, verbose_name='Поставка', on_delete=models.CASCADE)
+    delivery = models.ForeignKey(DeliveryHead, verbose_name='Поставка',related_name='delivery_position', on_delete=models.CASCADE)
     pos_number = models.IntegerField(verbose_name='Номер позиции в поставке', blank=False) # TODO: сценарий создания и распределение номеров позиций
     material = models.ForeignKey(Material, verbose_name="Материал", on_delete=models.SET('Материал удален'))
     value = models.DecimalField(max_digits=10, verbose_name='Количество', max_length=50, decimal_places=5)

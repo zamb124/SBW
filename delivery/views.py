@@ -5,6 +5,10 @@ from .models import DeliveryHead, DeliveryType, DeliveryPosition
 from .tables import DeliveryTable
 from django_tables2 import RequestConfig
 from operations.models import Task
+import json
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import (
+    CreateView, UpdateView, DetailView, TemplateView, View)
 # Create your views here.
 @login_required(login_url='login/')
 def deliveries(request):
@@ -23,8 +27,19 @@ def deliveries(request):
     infopanel['operations'] = Task.objects.all().count()
     return render(request, 'deliveries.html', {'table': table, 'infopanel':infopanel})
 
-def delivery(request):#Вывести все задачи? TODO: Переделать на вывод и поставок тоже
-    querry = DeliveryHead.objects.all().order_by('-id')[:100]
-    infopanel = {}
-    infopanel['operations'] = operations = DeliveryHead.objects.all().count()
-    return render(request,'deliveries.html',{'object_list': querry, 'infopanel':infopanel, 'path': request.path} )
+@login_required(login_url='login/')
+def delivery(request, id):#Вывести все задачи? TODO: Переделать на вывод и поставок тоже
+    return render(request,'delivery.html',{})
+
+class DeliveryView(DetailView):
+    model = DeliveryHead
+    context_object_name = "delivery"
+    template_name = "delivery.html"
+    def get_queryset(self):
+        queryset = super(DeliveryView, self).get_queryset()
+        return queryset.select_related("delivery_type")
+
+    def get_context_data(self, **kwargs):
+        context = super(DeliveryView, self).get_context_data(**kwargs)
+        context.update({"positions": context["delivery"].delivery_position.all(),})
+        return context

@@ -1,0 +1,88 @@
+<!--{% extends "wrapper.html" %}-->
+
+{% load staticfiles %}
+{% block content %}
+
+<form action="" method="post" xmlns="http://www.w3.org/1999/html">
+    {% csrf_token %}
+    <div class="panel">
+        {{ form.as_view }}
+        <div class="panel-heading">
+            <h3 class="panel-title">Поставка </h3>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="panel panel-info" href="#">
+                        <div class="panel-heading"><a href="/delivery/{{ delivery.id }}/view/"> Поставка # {{ delivery.id }} </a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <form>
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-2 col-form-label">Поставка </label>
+                                        <div class="col-sm-2">
+                                            <input type="text" readonly class="form-control" id="staticEmail"
+                                                   value="{{ delivery.id }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                             <label for="staticEmail" class="col-sm-2 col-form-label"> Партнер </label>
+                                        <div class="col-sm-2">
+                                            <input type="text" readonly class="form-control" id="staticEmail"
+                                                   value="{{ delivery.partner }}">
+                                        </div>
+                                    </div>
+                                                                        <div class="form-group row">
+                                             <label for="delivery_type" class="col-sm-2 col-form-label"> Тип поставки </label>
+                                        <div class="col-sm-2">
+                                            <input type="text" readonly class="form-control" id="delivery_type"
+                                                   value="{{ delivery.delivery_type }}">
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="table-responsive">
+                                    <hr align="center" width=100% color="blue" />
+                    <table class="table ">
+                      <thead>
+                        <tr>
+                          <th width="5%">ID</th>
+                          <th width="5%">ERP</th>
+                          <th width="11%">Материал</th>
+                          <th width="11%">Кол-во</th>
+                          <th width="11%">Создал</th>
+                          <th width="10%">Tags</th>
+                          <th width="10%">Действия</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for item in positions %}
+                        <tr id="account_details49" class="text-center">
+                          <td><a href="/accounts/49/view/">{{ item.pos_number}}</a> </td>
+                          <td>{{ item.number }}</td>
+
+                          <td>{{ item.material}} </td>
+                          <td>
+                              <span class="text-left">{{ item.value }}</span><br>
+                          </td>
+                          <td> {{ item.creator }} </td>
+                          <td>
+                            No Tags
+                          </td>
+                          <td class="actions" aria-label="das">
+                              <a href="/accounts/49/edit/" class="btn-sm btn-primary"> <span class="lnr lnr-pencil"> </span></a> <a>&nbsp</a>
+
+                            <a href="/accounts/49/delete/" class="btn-sm btn-danger" > <span class=" lnr lnr-trash"> </span>  </a>
+                          </td>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                            </div>
+                        </div>
+                    </div>
+</form>
+
+
+<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+
+
+{% endblock %}

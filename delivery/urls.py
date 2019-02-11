@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import ListView
+from .views import DeliveryView
 from . import views
 
 urlpatterns = [
@@ -26,7 +27,8 @@ urlpatterns = [
     #path('material-autocomplete', views.MaterialAutocomplete.as_view(),
     #                  name='material-autocomplete',
     #              ),
-    path('<int:id>/', views.delivery, name='delivery'),
+    #path('<int:id>/', views.delivery, name='delivery'),
+    path('<int:pk>/view/', DeliveryView.as_view(), name="delivery_view"),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
